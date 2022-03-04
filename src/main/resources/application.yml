@@ -1,0 +1,33 @@
+server:
+  port: 9803
+
+logging:
+  level:
+    root: info
+
+spring:
+  profiles:
+    active: local
+  jackson:
+    default-property-inclusion: always
+    date-format: 'yyyy-MM-dd HH:mm:ss'
+    time-zone: 'GMT+8'
+  servlet:
+    multipart:
+      max-file-size: 5MB
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: HOME-SERVER
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+    nacos:
+      config:
+        server-addr: 192.168.0.110:8848
+#        server-addr: 192.168.23.24:8848
+        file-extension: yaml
+      discovery:
+        server-addr: 192.168.0.110:8848
+#        server-addr: 192.168.23.24:8848
