@@ -25,9 +25,9 @@ spring:
         enabled: true
     nacos:
       config:
-        server-addr: 192.168.0.110:8848
-#        server-addr: 192.168.23.24:8848
+#        server-addr: 192.168.0.110:8848
+        server-addr: 192.168.23.24:8848
         file-extension: yaml
       discovery:
-        server-addr: 192.168.0.110:8848
-#        server-addr: 192.168.23.24:8848
+#        server-addr: 192.168.0.110:8848
+        server-addr: 192.168.23.24:8848

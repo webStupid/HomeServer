@@ -1,11 +1,11 @@
 package com.wwb.homeserver.api;
 
-import com.wwb.homeserver.service.TestProvider;
+import com.wwb.commonbase.utils.response.ResponseResult;
+import com.wwb.feignserver.accountserver.ITestProvider;
+import com.wwb.feignserver.accountserver.entity.request.TestRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author weibo
@@ -17,14 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestConsumer {
 
     @Autowired
-    private TestProvider testProvider;
+    private ITestProvider testProvider;
 
-    @GetMapping("/testConsumer")
-    public String testConsumer(){
-        String text = testProvider.testProvider();
-        log.info(text);
-        log.info("consumer");
-        return "SUCCESS";
+    @PostMapping("/testConsumer")
+    public ResponseResult testConsumer(@RequestParam String name) {
+        TestRequest testRequest = new TestRequest();
+        testRequest.setName(name);
+        return ResponseResult.success(testProvider.testProvider(testRequest).getData());
     }
 
 
