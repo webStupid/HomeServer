@@ -13,7 +13,7 @@ class HomeServerApplicationTests {
 
     @Test
     void contextLoads() {
-//        testConsumer.testConsumer();
+        System.out.print("213");
     }
 
 }

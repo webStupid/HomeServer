@@ -31,3 +31,43 @@ spring:
       discovery:
 #        server-addr: 192.168.0.110:8848
         server-addr: 192.168.23.24:8848
+  datasource:
+    url: "jdbc:mysql://123.60.58.111:3306/home?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true&verifyServerCertificate=false&useSSL=false"
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    dbcp2:
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      validation-query: "SELECT 1"
+      time-between-eviction-runs-millis: 300000
+      min-evictable-idle-time-millis: 1800000
+      initial-size: 5
+      max-idle: 50
+      max-wait-millis: 60000
+    jpa:
+      database-platform: org.hibernate.dialect.MySQL5Dialect
+      show-sql: true
+
+mybatis:
+  mapper-locations: classpath*:mappers/*.xml
+  check-config-location: true
+  configuration:
+    #全局映射器启用缓存
+    cache-enabled: true
+    #允许 JDBC 支持自动生成主键
+    use-generated-keys: true
+    #配置默认的执行器
+    default-executor-type: reuse
+    #指定 MyBatis 所用日志的具体实现
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+    #驼峰式命名
+    map-underscore-to-camel-case: true
+    # 枚举转换设置，使用枚举索引号进行映射
+    default-enum-type-handler: org.apache.ibatis.type.EnumOrdinalTypeHandler
+
+mybatis-plus:
+  type-enums-package: com.wwb.homeserver.enums
+  type-aliases-package: com.wwb.homeserver.pojo
+  mapper-locations: classpath*:mappers/*.xml
